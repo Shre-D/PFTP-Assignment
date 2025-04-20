@@ -1,0 +1,142 @@
+Performing descriptive analysis...
+Summary Statistics:
+       GDP_Growth  Exports_Growth         EPI  Expenditure     Revenue         CPI
+count  147.000000      147.000000  147.000000   147.000000  147.000000  147.000000
+mean     3.062762        3.210701    3.107144    31.083231   27.135238   12.239503
+std      3.526900        8.855190    4.320692     7.607141    8.016546   24.436207
+min     -9.901000      -19.840000  -10.769500    13.008000    7.793000   -2.093000
+25%      1.322500       -0.671000    0.666700    27.502500   20.522500    2.891500
+50%      3.253000        3.416000    3.298200    32.012000   27.972000    5.361000
+75%      5.260000        6.747500    5.817350    34.920000   33.854000    9.909000
+max     10.994000       45.813000   13.908800    46.564000   44.808000  229.824000
+Countries in dataset: Argentina, Brazil, China, People's Republic of, Egypt, Arab Republic of, India, Iran, Islamic Republic of, Russian Federation, Saudi Arabia, South Africa, United Arab Emirates
+
+Growth Rate Summary for Argentina:
+Average Expenditure Growth Rate: -0.02%
+Average Revenue Growth Rate: 0.51%
+Correlation between Expenditure and EPI: -0.527
+Correlation between Revenue and EPI: -0.080
+
+Growth Rate Summary for Brazil:
+Average Expenditure Growth Rate: 1.36%
+Average Revenue Growth Rate: 0.60%
+Correlation between Expenditure and EPI: -0.278
+Correlation between Revenue and EPI: 0.561
+
+Growth Rate Summary for China, People's Republic of:
+Average Expenditure Growth Rate: 1.71%
+Average Revenue Growth Rate: -0.07%
+Correlation between Expenditure and EPI: -0.614
+Correlation between Revenue and EPI: 0.241
+
+Growth Rate Summary for Egypt, Arab Republic of:
+Average Expenditure Growth Rate: -0.45%
+Average Revenue Growth Rate: -1.00%
+Correlation between Expenditure and EPI: -0.198
+Correlation between Revenue and EPI: -0.048
+
+Growth Rate Summary for India:
+Average Expenditure Growth Rate: 0.36%
+Average Revenue Growth Rate: 0.73%
+Correlation between Expenditure and EPI: -0.269
+Correlation between Revenue and EPI: 0.594
+
+Growth Rate Summary for Iran, Islamic Republic of:
+Average Expenditure Growth Rate: -0.43%
+Average Revenue Growth Rate: -1.01%
+Correlation between Expenditure and EPI: 0.391
+Correlation between Revenue and EPI: 0.271
+
+Growth Rate Summary for Russian Federation:
+Average Expenditure Growth Rate: 0.93%
+Average Revenue Growth Rate: 0.40%
+Correlation between Expenditure and EPI: -0.441
+Correlation between Revenue and EPI: 0.287
+
+Growth Rate Summary for Saudi Arabia:
+Average Expenditure Growth Rate: 0.52%
+Average Revenue Growth Rate: -2.06%
+Correlation between Expenditure and EPI: -0.500
+Correlation between Revenue and EPI: 0.325
+
+Growth Rate Summary for South Africa:
+Average Expenditure Growth Rate: 1.30%
+Average Revenue Growth Rate: 0.78%
+Correlation between Expenditure and EPI: -0.382
+Correlation between Revenue and EPI: 0.304
+
+Growth Rate Summary for United Arab Emirates:
+Average Expenditure Growth Rate: -1.21%
+Average Revenue Growth Rate: -0.16%
+Correlation between Expenditure and EPI: -0.193
+Correlation between Revenue and EPI: 0.294
+
+Estimating panel data models...
+
+Fixed Effects Model Results:
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                    EPI   R-squared:                        0.1438
+Estimator:                   PanelOLS   R-squared (Between):             -0.8859
+No. Observations:                 147   R-squared (Within):               0.1438
+Date:                Mon, Apr 21 2025   R-squared (Overall):             -0.0137
+Time:                        04:00:18   Log-likelihood                   -400.35
+Cov. Estimator:            Unadjusted                                           
+                                        F-statistic:                      7.4997
+Entities:                          10   P-value                           0.0001
+Avg Obs:                       14.700   Distribution:                   F(3,134)
+Min Obs:                       12.000                                           
+Max Obs:                       15.000   F-statistic (robust):             7.4997
+                                        P-value                           0.0001
+Time periods:                      15   Distribution:                   F(3,134)
+Avg Obs:                       9.8000                                           
+Min Obs:                       9.0000                                           
+Max Obs:                      10.0000                                           
+                                                                                
+                              Parameter Estimates                              
+===============================================================================
+             Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+-------------------------------------------------------------------------------
+const           10.019     4.8800     2.0530     0.0420      0.3668      19.671
+Expenditure    -0.5333     0.1351    -3.9476     0.0001     -0.8005     -0.2661
+Revenue         0.3624     0.1137     3.1886     0.0018      0.1376      0.5872
+CPI            -0.0139     0.0181    -0.7666     0.4446     -0.0497      0.0219
+===============================================================================
+
+F-test for Poolability: 3.7406
+P-value: 0.0003
+Distribution: F(9,134)
+
+Included effects: Entity
+
+Model Comparison (Hausman Test):
+                    Model Comparison                    
+========================================================
+                         Fixed Effects    Random Effects
+--------------------------------------------------------
+Dep. Variable                      EPI               EPI
+Estimator                     PanelOLS     RandomEffects
+No. Observations                   147               147
+Cov. Est.                   Unadjusted        Unadjusted
+R-squared                       0.1438            0.1024
+R-Squared (Within)              0.1438            0.1289
+R-Squared (Between)            -0.8859           -0.2790
+R-Squared (Overall)            -0.0137            0.0642
+F-statistic                     7.4997            5.4353
+P-value (F-stat)                0.0001            0.0014
+=====================     ============   ===============
+const                           10.019            7.6854
+                              (2.0530)          (3.5553)
+Expenditure                    -0.5333           -0.3644
+                             (-3.9476)         (-3.9582)
+Revenue                         0.3624            0.2568
+                              (3.1886)          (2.9982)
+CPI                            -0.0139           -0.0186
+                             (-0.7666)         (-1.1825)
+======================= ============== =================
+Effects                         Entity                  
+--------------------------------------------------------
+
+T-stats reported in parentheses
+
+Analysis complete!

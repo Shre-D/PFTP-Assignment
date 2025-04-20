@@ -60,43 +60,39 @@ def descriptive_analysis(data):
     
     # Make a copy with reset index for summary statistics
     data_reset = data.reset_index()
-    
-    # Summary statistics
     print("Summary Statistics:")
-    print(data_reset.describe())
-    
+    data_for_stats = data_reset.drop(columns=['TIME_PERIOD'], errors='ignore')
+    print(data_for_stats.describe())
     # Get unique countries from the data
     countries = data.index.get_level_values(0).unique()
     print(f"Countries in dataset: {', '.join(countries)}")
     
-    # Time series plots for Argentina (or first country if Argentina not available)
-    target_country = 'Argentina' if 'Argentina' in countries else countries[0]
-    
+    for target_country in countries:
     # Get country data using xs for safer MultiIndex access
-    country_data = data.xs(target_country, level=0).reset_index()
-    
-    plt.figure(figsize=(15, 8))
-    plt.plot(country_data['TIME_PERIOD'], country_data['Expenditure'], 'teal', linewidth=2, 
+        country_data = data.xs(target_country, level=0).reset_index()
+
+        plt.figure(figsize=(15, 8))
+        plt.plot(country_data['TIME_PERIOD'], country_data['Expenditure'], 'teal', linewidth=2, 
              label='Expenditure, % of GDP')
-    plt.plot(country_data['TIME_PERIOD'], country_data['Revenue'], 'orange', linewidth=2, 
+        plt.plot(country_data['TIME_PERIOD'], country_data['Revenue'], 'orange', linewidth=2, 
              label='Revenue, % of GDP')
-    plt.plot(country_data['TIME_PERIOD'], country_data['CPI'], 'red', linewidth=2, 
+        plt.plot(country_data['TIME_PERIOD'], country_data['CPI'], 'red', linewidth=2, 
              label='CPI, % change')
-    plt.plot(country_data['TIME_PERIOD'], country_data['GDP_Growth'], 'g-', linewidth=1, 
+        plt.plot(country_data['TIME_PERIOD'], country_data['GDP_Growth'], 'g-', linewidth=1, 
              label='GDP Growth, %')
-    plt.plot(country_data['TIME_PERIOD'], country_data['Exports_Growth'], 'y-', linewidth=1, 
+        plt.plot(country_data['TIME_PERIOD'], country_data['Exports_Growth'], 'y-', linewidth=1, 
              label='Exports Growth, %')
-    plt.plot(country_data['TIME_PERIOD'], country_data['EPI'], 'r--', linewidth=2, 
+        plt.plot(country_data['TIME_PERIOD'], country_data['EPI'], 'r--', linewidth=2, 
              label='Economic Performance Index')
-    
-    plt.title(f'Economic Indicators Over Time ({target_country})', fontsize=16)
-    plt.xlabel('Year', fontsize=14)
-    plt.ylabel('Value', fontsize=14)
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2, fontsize=10)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig(f'{target_country}_time_series.png')
-    plt.show()
+
+        plt.title(f'Economic Indicators Over Time ({target_country})', fontsize=16)
+        plt.xlabel('Year', fontsize=14)
+        plt.ylabel('Value', fontsize=14)
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2, fontsize=10)
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig(f'{target_country}_time_series.png')
+
     
     # Scatter plots with regression lines
     plt.figure(figsize=(12, 8))
